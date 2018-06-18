@@ -33,9 +33,91 @@ html {
     font-size: medium;
     font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif, "微軟正黑體", "Microsoft JhengHei";
 
-    background: $mainBackgroundColor;
-    background-image: $mainBackgroundImage;
+    background: rgba(242, 242, 242, 1.00);
 
     @include font-smoothing(antialiased);
   }
+}
+
+.container {
+  display: inline-block;
+  width: 940px;
+}
+
+#header {
+  display: inline-block;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 1.00);
+
+  .container {
+    
+    @include clearfix();
+    
+    > * {
+      float: left;
+      display: inline-block;
+      height: 70px;
+      line-height: 70px;
+    }
+    .logo, .user {
+      font-weight: bold;
+      color: white;
+      @include overflow-docx3();
+    }
+    .logo {
+      width: 150px;
+      font-size: 24px;
+      text-align: left;
+    }
+    .user {
+      width: 80px;
+      text-transform: uppercase;
+      text-align: right;
+    }
+    .menu {
+      width: calc(100% - 150px - 80px);
+      @include clearfix();
+
+      > * {
+        position: relative;
+        float: left;
+        display: inline-block;
+        height: 100%;
+        padding: 0 16px;
+        color: rgba(145, 155, 164, 1.00);
+        text-decoration: none;
+        text-transform: uppercase;
+        @include transition(color .3s);
+        
+        
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          display: inline-block;
+          width: 100%;
+          height: 3px;
+          background-color: white;
+          @include opacity(0);
+          @include transition(opacity .3s);
+          
+        }
+
+        &.active, &:hover {
+          color: white;
+          &:after {
+            @include opacity(1);
+          }
+        }
+      }
+    }
+
+  }
+}
+
+.panel {
+  background-color: rgba(255, 255, 255, 1.00);
+  @include box-shadow(0 0 10px 5px #EBEBEB);
+  @include border-radius(3px);
 }

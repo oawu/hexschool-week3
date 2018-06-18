@@ -1,0 +1,408 @@
+/**
+ * @author      OA Wu <comdan66@gmail.com>
+ * @copyright   Copyright (c) 2015 - 2018, OAF2E
+ * @license     http://opensource.org/licenses/MIT  MIT License
+ * @link        https://www.ioa.tw/
+ */
+
+@import "_oa";
+
+#main {
+  display: inline-block;
+  width: 100%;
+
+  .container {
+    padding-bottom: 32px;
+
+    .info {
+      display: inline-block;
+      width: 100%;
+      margin-top: 32px;
+      @include clearfix();
+      
+      > * {
+        float: left;
+        display: inline-block;
+        width: 50%;
+        height: 32px;
+        line-height: 32px;
+      }
+      .title {
+        text-align: left;
+        font-size: 24px;
+        color: rgba(0, 0, 0, 1.00);
+        font-weight: bold;
+      }
+      .conditions {
+        @include clearfix();
+
+        > * {
+          float: right;
+          display: inline-block;
+          @include clearfix();
+          
+          > * {
+            float: left;
+            font-size: 16px;
+            color: rgba(155, 155, 155, 1.00);
+          }
+          span {
+            cursor: pointer;
+            font-weight: bold;
+            @include transition(color .3s);
+
+            &:hover {
+              color: rgba(120, 120, 120, 1.00);
+            }
+          }
+
+          i {
+            width: 16px;
+            height: 32px;
+            color: rgba(0, 0, 0, 1.00);
+          }
+        }
+        .unit {
+          position: relative;
+          margin-left: 16px;
+
+          &:hover {
+            .list {
+              display: inline-block;
+            }
+          }
+
+          .list {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            display: inline-block;
+            width: 100px;
+            background-color: white;
+            @include box-shadow(1px 2px 10px 0 #9B9B9B);
+            @include border-radius(2px);
+            overflow: hidden;
+
+            display: none;
+
+            span {
+              display: inline-block;
+              width: 100%;
+              height: 32px;
+              line-height: 32px;
+              font-weight: normal;
+              @include transition(background-color .3s, color .3s);
+              
+              &.active, &:hover {
+                color: white;
+                background-color: rgba(0, 0, 0, 1.00);
+              }
+            }
+
+          }
+        }
+        .dates {
+        }
+      }
+    }
+
+    .block1 {
+      display: inline-block;
+      width: 100%;
+      margin-top: 20px;
+      
+      .panel {
+
+      }
+    }
+    .block2 {
+      display: inline-block;
+      width: 100%;
+      margin-top: 20px;
+      @include clearfix();
+      
+      > * {
+        float: left;
+        width: calc((100% - 20px * 1) / 2);
+
+        + * {
+          margin-left: 20px;
+        }
+      }
+      .panel {
+        padding: 28px 32px;
+        
+        .title {
+          display: inline-block;
+          width: 100%;
+          height: 32px;
+          color: rgba(0, 0, 0, 1.00);
+          font-size: 24px;
+          text-align: left;
+        }
+      }
+      .left {
+        .list {
+          display: inline-block;
+          width: 100%;
+          margin-top: 16px;
+          
+          .item {
+            display: inline-block;
+            width: 100%;
+            height: 88px;
+            line-height: 88px;
+            @include clearfix();
+
+            + .item {
+              border-top: 1px solid rgba(239, 239, 239, 1.00);
+            }
+            
+            > * {
+              float: left;
+              display: inline-block;
+            }
+            *[class^="icon-"] {
+              width: 52px;
+              font-size: 40px;
+              text-align: left;
+              color: rgba(0, 0, 0, 1.00);
+            }
+            .num {
+              width: 72px;
+              text-align: right;
+              color: rgba(0, 0, 0, 1.00);
+              font-size: 20px;
+            }
+            .rate {
+              width: 80px;
+              text-align: right;
+              position: relative;
+
+              &:before {
+                font-family: "icomoon"; speak: none; font-style: normal; font-weight: normal; font-variant: normal;
+                @include font-smoothing(antialiased);
+              }
+              &.green {
+                color: rgba(130, 207, 66, 1.00);
+                &:before {
+                  content: "\ea3a";
+                }
+              }
+              &.red {
+                color: rgba(204, 18, 43, 1.00);
+                &:before {
+                  content: "\ea3e";
+                }
+              }
+              
+              >span {
+                cursor: pointer;
+                &:hover {
+                  + div {
+                    display: inline-block;
+                  }
+                }  
+              }
+              > div {
+                position: absolute;
+                bottom: calc(100% - 16px);
+                left: calc(50% - 200px / 2);
+
+                display: none;
+                width: 200px;
+                height: 80px;
+                text-align: center;
+                line-height: 23px;
+                background-color: rgba(0, 0, 0, 1.00);
+                @include border-radius(3px);
+
+                &:after {
+                  content: '';
+                  position: absolute;
+                  right: 80px;
+                  bottom: -5px;
+                  
+                  display: inline-block;
+                  width: 12px;
+                  height: 12px;
+                  background-color: rgba(0, 0, 0, 1.00);
+                  @include rotate(45deg);
+                }
+                > div {
+                  font-size: 14px;
+                  color: rgba(255, 255, 255, 1.00);
+                  margin-top: 16px;
+                  > b {
+                    color: rgba(130, 207, 66, 1.00);
+                  }
+                }
+                > i {
+                  color: rgba(155, 155, 155, 1.00);
+                  font-size: 14px;
+                }
+              }
+            }
+            .name {
+              text-align: left;
+              width: calc(100% - 52px - 72px - 80px);
+              color: rgba(155, 155, 155, 1.00);
+              font-size: 16px;
+            }
+          }
+        }
+      }
+      .right {
+
+        .list {
+          display: inline-block;
+          width: 100%;
+          margin-top: 16px;
+          
+          .item {
+            display: inline-block;
+            width: 100%;
+            @include clearfix();
+            padding: 8px 0;
+            + .item {
+              border-top: 1px solid rgba(240, 240, 240, 1.00);
+            }
+            > * {
+              float: left;
+              display: inline-block;
+              height: 100px;
+            }
+            .pic {
+              width: 100px;
+              overflow: hidden;
+              img {
+                width: 100%;
+              }
+            }
+            .detail {
+              width: calc(100% - 100px - 70px);
+              text-align: left;
+              padding-left: 16px;
+              > * {
+                display: inline-block;
+                width: 100%;
+                height: 23px;
+                line-height: 23px;
+              }
+              b {
+                margin-top: 20px;
+                color: rgba(0, 0, 0, 1.00);
+                font-size: 20px;
+              }
+              time {
+                color: rgba(155, 155, 155, 1.00);
+                font-size: 16px;
+                &:before {
+                  display: inline-block;
+                  font-size: 12px;
+                  color: rgba(117, 117, 117, 1.00);
+                  margin-right: 4px;
+                  text-align: center;
+                  width: 22px;
+                }
+              }
+              span {
+                color: rgba(155, 155, 155, 1.00);
+                font-size: 16px;
+                &:before {
+                  display: inline-block;
+                  font-size: 18px;
+                  margin-right: 4px;
+                  text-align: center;
+                  width: 22px;
+                  color: rgba(117, 117, 117, 1.00);
+                }
+              }
+            }
+            .total {
+              width: 70px;
+              position: relative;
+              > * {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                display: inline-block;
+                width: 100%;
+                text-align: right;
+                font-size: 20px;
+                font-weight: bold;
+                color: rgba(0, 0, 0, 1.00);
+                
+                &:before {
+                  content: 'Total';
+                  display: inline-block;
+                  color: rgba(0, 0, 0, 1.00);
+                  font-size: 14px;
+                  font-weight: normal;
+                }
+              }
+
+            }
+          }
+        }
+      }
+    }
+    .block3 {
+      display: inline-block;
+      width: 100%;
+      margin-top: 20px;
+      @include clearfix();
+      
+      > * {
+        float: left;
+        width: calc((100% - 20px * 2) / 3);
+        height: 140px;
+
+        + * {
+          margin-left: 20px;
+        }
+      }
+      .panel {
+        padding-top: 32px;
+        
+        span {
+          display: inline-block;
+          width: 100%;
+          height: 32px;
+          line-height: 32px;
+          color: rgba(0, 0, 0, 1.00);
+          font-size: 16px;
+          text-transform: uppercase;
+          font-weight: bold;
+          &:before {
+            display: inline-block;
+            width: 32px;
+            font-size: 20px;
+          }
+        }
+        b {
+          display: inline-block;
+          width: 100%;
+          font-size: 36px;
+          &.green {
+            color: rgba(130, 207, 66, 1.00);
+          }
+          &.red {
+            color: rgba(204, 18, 43, 1.00);
+          }
+          &.blue {
+            color: rgba(80, 148, 220, 1.00);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+#chart {
+  display: inline-block;
+  height: 360px;
+  width: 100%;
+}
